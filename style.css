@@ -1,0 +1,26 @@
+.body {
+    font-size: 22px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    gap: 50px;
+}
+
+.style {
+    margin: 40px;
+    width: 100px;
+}
+
+.js-middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.js-end-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
