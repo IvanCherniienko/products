@@ -18,6 +18,8 @@ function onListClick(e) {
   const category = e.target.getAttribute('data-category')
   const objects = goods[category]
 
+  middleBlock.innerHTML = ''
+
   for (const obj of objects) {
       const html = listItemTemplate(obj)
       middleBlock.insertAdjacentHTML('beforeend', html)
