@@ -32,11 +32,17 @@ function onItemClick(e) {
     return
   }
 
+  const addItem = target.getAttribute('data-added') === 'true'
+  if (addItem) {
+    return
+  }
+
   const div = generateInfo()
-  const btn = generateButton()
+  const newBtn = generateButton()
   endBlock.appendChild(div)
-  endBlock.appendChild(btn)
-  btn.addEventListener('click', onBtnClick)
+  endBlock.appendChild(newBtn)
+  target.setAttribute('data-added', 'true')
+  newBtn.addEventListener('click', onBtnClick)
 }
 
 function onBtnClick() {
@@ -52,6 +58,7 @@ const listItemTemplate = (item) => `
 function generateInfo() {
   const div = document.createElement("div")
   div.textContent = "Information:"
+  div.classList.add("info")
   return div
 }
 
