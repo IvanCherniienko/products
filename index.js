@@ -4,6 +4,8 @@ const goods = {
     forhome: ['table', 'chair']
 }
 
+let isEndBlockAdded = false
+
 const list = document.querySelector('.js-list')
 const middleBlock = document.querySelector('.js-middle')
 const endBlock = document.querySelector('.js-end-block')
@@ -32,17 +34,14 @@ function onItemClick(e) {
     return
   }
 
-  const addItem = target.getAttribute('data-added') === 'true'
-  if (addItem) {
-    return
+  if (!isEndBlockAdded) {
+    const div = generateInfo()
+    const newBtn = generateButton()
+    endBlock.appendChild(div)
+    endBlock.appendChild(newBtn)
+    newBtn.addEventListener('click', onBtnClick)
+    isEndBlockAdded = true
   }
-
-  const div = generateInfo()
-  const newBtn = generateButton()
-  endBlock.appendChild(div)
-  endBlock.appendChild(newBtn)
-  target.setAttribute('data-added', 'true')
-  newBtn.addEventListener('click', onBtnClick)
 }
 
 function onBtnClick() {
