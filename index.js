@@ -1,7 +1,7 @@
 const goods = {
-    clothes: ['hoodie', 'shorts', 'dress', 'shoes', 'jackets'],
-    forcar: ['oil' ,'filters', 'tires', 'discs'],
-    forhome: ['table', 'chair']
+  clothes: ['hoodie', 'shorts', 'dress', 'shoes', 'jackets'],
+  forcar: ['oil', 'filters', 'tires', 'discs'],
+  forhome: ['table', 'chair']
 }
 
 let isEndBlockAdded = false
@@ -10,7 +10,7 @@ const list = document.querySelector('.js-list')
 const middleBlock = document.querySelector('.js-middle')
 const endBlock = document.querySelector('.js-end-block')
 
-list.addEventListener('click' ,onListClick) 
+list.addEventListener('click', onListClick)
 middleBlock.addEventListener('click', onItemClick)
 
 function onListClick(e) {
@@ -23,10 +23,10 @@ function onListClick(e) {
   middleBlock.innerHTML = ''
 
   for (const obj of objects) {
-      const html = listItemTemplate(obj)
-      middleBlock.insertAdjacentHTML('beforeend', html)
-    }
+    const html = listItemTemplate(obj)
+    middleBlock.insertAdjacentHTML('beforeend', html)
   }
+}
 
 function onItemClick(e) {
   const target = e.target
@@ -45,8 +45,14 @@ function onItemClick(e) {
 }
 
 function onBtnClick() {
+  const items = middleBlock.querySelectorAll('.item')
+  items.forEach(item => {
+    item.removeEventListener('click', onItemClick)
+  })
+
   endBlock.innerHTML = ''
   middleBlock.innerHTML = ''
+  isEndBlockAdded = false
   alert('Goods added to cart')
 }
 
